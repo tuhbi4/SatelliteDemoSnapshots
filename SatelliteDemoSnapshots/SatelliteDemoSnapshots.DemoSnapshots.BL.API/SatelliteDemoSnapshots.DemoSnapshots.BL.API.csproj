@@ -5,7 +5,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\SatelliteDemoSnapshots.DemoSnapshots.Common.Dependencies\SatelliteDemoSnapshots.DemoSnapshots.Common.Dependencies.csproj" />
     <ProjectReference Include="..\SatelliteDemoSnapshots.DemoSnapshots.Common.Entities\SatelliteDemoSnapshots.DemoSnapshots.Common.Entities.csproj" />
+    <ProjectReference Include="..\SatelliteDemoSnapshots.DemoSnapshots.DL.DAO\SatelliteDemoSnapshots.DemoSnapshots.DL.DAO.csproj" />
+    <ProjectReference Include="..\SatelliteDemoSnapshots.DemoSnapshots.DL.DBO\SatelliteDemoSnapshots.DemoSnapshots.DL.DBO.csproj" />
   </ItemGroup>
 
 
