@@ -1,26 +1,52 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using SatelliteDemoSnapshots.DemoSnapshots.Common.Entities;
-using System;
-using System.Collections.Generic;
+using SatelliteDemoSnapshots.DemoSnapshots.DL.DAO.Interfaces;
+using System.Threading.Tasks;
 
 namespace SatelliteDemoSnapshots.DemoSnapshots.BL.API.Controllers
 {
     [ApiController]
     [Route("[controller]")]
-    public class DemosnapshotController : ControllerBase
+    public class DemoSnapshotController : ControllerBase
     {
-        private readonly ILogger<DemosnapshotController> _logger;
+        private readonly ILogger<DemoSnapshotController> _logger;
+        private readonly IRepository<DemoSnapshot> _demoSnapshotRepository;
 
-        public DemosnapshotController(ILogger<DemosnapshotController> logger)
+        public DemoSnapshotController(ILogger<DemoSnapshotController> logger, IRepository<DemoSnapshot> demoSnapshotRepository)
         {
             _logger = logger;
+            _demoSnapshotRepository = demoSnapshotRepository;
         }
 
         [HttpGet]
-        public IEnumerable<Demosnapshot> Get()
+        public async Task<IActionResult> GetAsync()
         {
-            throw new NotSupportedException();
+            return Ok(await _demoSnapshotRepository.GetAllAsync());
+        }
+
+        [HttpGet("{id}", Name = "Get")]
+        public async Task<DemoSnapshot> GetAsync(int id)
+        {
+            return await _demoSnapshotRepository.ReadAsync(id);
+        }
+
+        [HttpPost]
+        public async Task<int> PostAsync([FromBody] DemoSnapshot demoSnapshot)
+        {
+            return await _demoSnapshotRepository.CreateAsync(demoSnapshot);
+        }
+
+        [HttpPut("{id}")]
+        public async Task<int> PutAsync(int id, [FromBody] DemoSnapshot demoSnapshot)
+        {
+            return await _demoSnapshotRepository.UpdateAsync(demoSnapshot);
+        }
+
+        [HttpDelete("{id}")]
+        public async Task<int> DeleteAsync(int id)
+        {
+            return await _demoSnapshotRepository.DeleteAsync(id);
         }
     }
 }

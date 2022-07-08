@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.2.32616.157
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SatelliteDemoSnapshots.DemoSnapshots.PL.Web", "SatelliteDemoSnapshots.DemoSnapshots.PL.Web\SatelliteDemoSnapshots.DemoSnapshots.PL.Web.csproj", "{2F3FA486-E902-4D31-9886-6770695F01A7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SatelliteDemoSnapshots.DemoSnapshots.PL.Web", "SatelliteDemoSnapshots.DemoSnapshots.PL.Web\SatelliteDemoSnapshots.DemoSnapshots.PL.Web.csproj", "{2F3FA486-E902-4D31-9886-6770695F01A7}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "PL", "PL", "{D798FF67-9E8A-461D-B2F2-2D82847999A0}"
 EndProject
@@ -11,19 +11,21 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DL", "DL", "{045C94A6-B281-
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "BL", "BL", "{91027569-EB16-4185-ABC7-A72407129804}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SatelliteDemoSnapshots.DemoSnapshots.BL.API", "SatelliteDemoSnapshots.DemoSnapshots.BL.API\SatelliteDemoSnapshots.DemoSnapshots.BL.API.csproj", "{F8B9FD9D-2868-4F87-A31C-3F6C375A77A2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SatelliteDemoSnapshots.DemoSnapshots.BL.API", "SatelliteDemoSnapshots.DemoSnapshots.BL.API\SatelliteDemoSnapshots.DemoSnapshots.BL.API.csproj", "{F8B9FD9D-2868-4F87-A31C-3F6C375A77A2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SatelliteDemoSnapshots.DemoSnapshots.DL.DAO", "SatelliteDemoSnapshots.DemoSnapshots.DL.DAO\SatelliteDemoSnapshots.DemoSnapshots.DL.DAO.csproj", "{36CA8E13-760D-475D-B572-86DEEC7A11E7}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SatelliteDemoSnapshots.DemoSnapshots.PL.APIClient", "SatelliteDemoSnapshots.DemoSnapshots.PL.APIClient\SatelliteDemoSnapshots.DemoSnapshots.PL.APIClient.csproj", "{2DE4DF38-373D-458C-A3C7-9452A81586F8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SatelliteDemoSnapshots.DemoSnapshots.DL.DAO", "SatelliteDemoSnapshots.DemoSnapshots.DL.DAO\SatelliteDemoSnapshots.DemoSnapshots.DL.DAO.csproj", "{36CA8E13-760D-475D-B572-86DEEC7A11E7}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Common", "Common", "{CCEC9BC0-CA4F-4FF3-913F-B7F930E2ADE3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SatelliteDemoSnapshots.DemoSnapshots.Common.Entities", "SatelliteDemoSnapshots.DemoSnapshots.Common.Entities\SatelliteDemoSnapshots.DemoSnapshots.Common.Entities.csproj", "{EDB228F7-A13D-4985-894B-D891BF1BA964}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SatelliteDemoSnapshots.DemoSnapshots.Common.Entities", "SatelliteDemoSnapshots.DemoSnapshots.Common.Entities\SatelliteDemoSnapshots.DemoSnapshots.Common.Entities.csproj", "{EDB228F7-A13D-4985-894B-D891BF1BA964}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{3C10B309-0EA0-40A6-A5CB-C221CE84D212}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "BL", "BL", "{A4EBF8A7-41C6-463A-8BFE-5F16132D076E}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SatelliteDemoSnapshots.DemoSnapshots.DL.DBO", "SatelliteDemoSnapshots.DemoSnapshots.DL.DBO\SatelliteDemoSnapshots.DemoSnapshots.DL.DBO.csproj", "{5E1772E4-8E4C-4C61-BF96-9A5451B46723}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SatelliteDemoSnapshots.DemoSnapshots.Common.Dependencies", "SatelliteDemoSnapshots.DemoSnapshots.Common.Dependencies\SatelliteDemoSnapshots.DemoSnapshots.Common.Dependencies.csproj", "{C0391328-4B86-4FB2-8BD1-1962FFCA2133}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -43,14 +45,18 @@ Global
 		{36CA8E13-760D-475D-B572-86DEEC7A11E7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{36CA8E13-760D-475D-B572-86DEEC7A11E7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{36CA8E13-760D-475D-B572-86DEEC7A11E7}.Release|Any CPU.Build.0 = Release|Any CPU
-		{2DE4DF38-373D-458C-A3C7-9452A81586F8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{2DE4DF38-373D-458C-A3C7-9452A81586F8}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{2DE4DF38-373D-458C-A3C7-9452A81586F8}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{2DE4DF38-373D-458C-A3C7-9452A81586F8}.Release|Any CPU.Build.0 = Release|Any CPU
 		{EDB228F7-A13D-4985-894B-D891BF1BA964}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{EDB228F7-A13D-4985-894B-D891BF1BA964}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EDB228F7-A13D-4985-894B-D891BF1BA964}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EDB228F7-A13D-4985-894B-D891BF1BA964}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5E1772E4-8E4C-4C61-BF96-9A5451B46723}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5E1772E4-8E4C-4C61-BF96-9A5451B46723}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5E1772E4-8E4C-4C61-BF96-9A5451B46723}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5E1772E4-8E4C-4C61-BF96-9A5451B46723}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C0391328-4B86-4FB2-8BD1-1962FFCA2133}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C0391328-4B86-4FB2-8BD1-1962FFCA2133}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C0391328-4B86-4FB2-8BD1-1962FFCA2133}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C0391328-4B86-4FB2-8BD1-1962FFCA2133}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -59,9 +65,10 @@ Global
 		{2F3FA486-E902-4D31-9886-6770695F01A7} = {D798FF67-9E8A-461D-B2F2-2D82847999A0}
 		{F8B9FD9D-2868-4F87-A31C-3F6C375A77A2} = {91027569-EB16-4185-ABC7-A72407129804}
 		{36CA8E13-760D-475D-B572-86DEEC7A11E7} = {045C94A6-B281-41B6-8F18-365102AF2808}
-		{2DE4DF38-373D-458C-A3C7-9452A81586F8} = {D798FF67-9E8A-461D-B2F2-2D82847999A0}
 		{EDB228F7-A13D-4985-894B-D891BF1BA964} = {CCEC9BC0-CA4F-4FF3-913F-B7F930E2ADE3}
 		{A4EBF8A7-41C6-463A-8BFE-5F16132D076E} = {3C10B309-0EA0-40A6-A5CB-C221CE84D212}
+		{5E1772E4-8E4C-4C61-BF96-9A5451B46723} = {045C94A6-B281-41B6-8F18-365102AF2808}
+		{C0391328-4B86-4FB2-8BD1-1962FFCA2133} = {CCEC9BC0-CA4F-4FF3-913F-B7F930E2ADE3}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {E727ECB6-5AA6-4944-92C4-DCDF74F02E0D}
