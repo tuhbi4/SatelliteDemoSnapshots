@@ -5,13 +5,62 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Satellite Demosnapshots</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
-    <link rel="stylesheet" href="/assets/css/style.css" />
+    <link rel="stylesheet" href="/css/style.css" />
 
 </head>
 <body>
-    <h1>Welcome to SatelliteDemoSnapshots!</h1>
+    <header>
+        <h1 class="display-5 text-center text-bg-dark mb-3">Welcome to DemoSnapshots!</h1>
+        <hr>
+    </header>
+    <div class="main container">
+        <form id="search-panel" class="row justify-content-between g-3" action="/" method="get">
+            <div class="input-group flex-nowrap w-auto" role="group" aria-label="BtnGroup">
+                <div class="form-floating flex-fill">
+                    <input type="text" class="form-control" id="SearchInput1" name="polygon" value="" placeholder="">
+                    <label for="SearchInput1" class="ml-3">Search by polygon:</label>
+                </div>
+                <button type="submit" value="" class="btn btn-secondary btn-outline-info btn-search w-auto">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+                        <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
+                    </svg>
+                </button>
+            </div>
+            <div class="w-auto align-self-center">
+                <button type="button" class="btn btn-outline-info" onclick="loadCreatePage()">Create New</button>
+            </div>
+        </form>
+        <hr>
+        <table class="table table-borderless table-hover table-info table-sm table-rounded">
+            <thead class="table-dark">
+                <tr>
+                    <th>
+                        Id
+                    </th>
+                    <th>
+                        Satellite
+                    </th>
+                    <th>
+                        Shooting Date
+                    </th>
+                    <th>
+                        Cloudiness
+                    </th>
+                    <th>
+                        Turn
+                    </th>
+                    <th>
+                        Coordinates
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody id="table" class="align-middle">
+            </tbody>
+        </table>
+    </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
-    <script src="/assets/js/script.js"></script>
+    <script src="/js/script.js" asp-append-version="true"></script>
 </body>
 </html>

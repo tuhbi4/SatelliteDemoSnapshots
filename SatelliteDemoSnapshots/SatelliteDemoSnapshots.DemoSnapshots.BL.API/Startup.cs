@@ -22,6 +22,15 @@ namespace SatelliteDemoSnapshots.DemoSnapshots.BL.API
         {
             services.AddControllers();
             services.InjectDependencies(Configuration);
+            services.AddCors(opt =>
+            {
+                opt.AddDefaultPolicy(builder =>
+                {
+                    builder.AllowAnyOrigin()
+                        .AllowAnyHeader()
+                        .AllowAnyMethod();
+                });
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -35,6 +44,8 @@ namespace SatelliteDemoSnapshots.DemoSnapshots.BL.API
             app.UseHttpsRedirection();
 
             app.UseRouting();
+
+            app.UseCors();
 
             app.UseAuthorization();
 

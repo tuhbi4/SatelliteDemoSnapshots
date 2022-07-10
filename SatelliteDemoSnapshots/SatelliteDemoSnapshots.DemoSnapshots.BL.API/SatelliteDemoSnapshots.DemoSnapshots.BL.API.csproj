@@ -11,5 +11,7 @@
     <ProjectReference Include="..\SatelliteDemoSnapshots.DemoSnapshots.DL.DBO\SatelliteDemoSnapshots.DemoSnapshots.DL.DBO.csproj" />
   </ItemGroup>
 
+  <ProjectExtensions><VisualStudio><UserProperties properties_4launchsettings_1json__JsonSchema="https://json.schemastore.org/launchsettings.json" /></VisualStudio></ProjectExtensions>
+
 
 </Project>
