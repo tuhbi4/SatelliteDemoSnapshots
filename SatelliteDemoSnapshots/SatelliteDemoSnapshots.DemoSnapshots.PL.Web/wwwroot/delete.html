@@ -1,0 +1,35 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Satellite Demosnapshots</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    <link rel="stylesheet" href="/css/style.css" />
+
+</head>
+<body>
+    <header>
+        <h1 class="display-5 text-center text-bg-dark mb-3">Welcome to DemoSnapshots!</h1>
+        <hr>
+    </header>
+    <div class="container">
+        <h3 class="text-center">Are you sure you want to delete this DemoSnapshot?</h3>
+        <div class="col-8 mx-auto hstack gap-3">
+            <div class="vr bg-danger"></div>
+            <div id="element" class="col bg-light border">
+            </div>
+        </div>
+        <hr>
+        <div class="row justify-content-center g-2 gap-3">
+            <div class="btn-group w-auto">
+                <button type="button" id="deleteButton" class="btn btn-danger" onclick="">Delete</button>
+                <button type="button" class="btn btn-secondary" onclick="loadIndexPage()">Back to List</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+    <script src="/js/script.js" asp-append-version="true"></script>
+</body>
+</html>
