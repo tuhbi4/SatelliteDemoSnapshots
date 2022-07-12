@@ -187,18 +187,18 @@ function createTableBody(data) {
 
         let td7 = tr.insertCell(6);
         let btnGroup = document.createElement('div');
-        btnGroup.classList.add("btn-group");
+        btnGroup.classList.add("btn-group", "px-1");
         td7.appendChild(btnGroup);
 
         let editButton = button.cloneNode(false);
         editButton.innerText = 'Edit';
-        editButton.classList.add("btn", "btn-outline-warning");
+        editButton.classList.add("btn", "btn-outline-warning", "shadow-sm");
         editButton.setAttribute('onclick', `loadEditPage(${item.id})`);
         btnGroup.appendChild(editButton);
 
         let deleteButton = button.cloneNode(false);
         deleteButton.innerText = 'Delete';
-        deleteButton.classList.add("btn", "btn-outline-danger");
+        deleteButton.classList.add("btn", "btn-outline-danger", "shadow-sm");
         deleteButton.setAttribute('onclick', `loadDeletePage(${item.id})`);
         btnGroup.appendChild(deleteButton);
     });
