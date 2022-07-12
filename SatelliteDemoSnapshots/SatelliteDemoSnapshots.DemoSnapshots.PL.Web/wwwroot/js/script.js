@@ -1,8 +1,17 @@
 ﻿const webApiUri = 'https://localhost:44323/DemoSnapshot/';
+const webApiSearchUri = 'https://localhost:44323/DemoSnapshot/?query=';
 const homeUri = 'https://localhost:44398/';
 const createUri = 'https://localhost:44398/create.html';
 const editUri = 'https://localhost:44398/edit.html';
 const deleteUri = 'https://localhost:44398/delete.html';
+const Satellites = Object.freeze({
+    Kanopus: "Kanopus",
+    BS: "BS",
+    Meteor: "Meteor",
+    Sentinel: "Sentinel",
+    KOMPSAT: "KOMPSAT",
+    Resurs: "Resurs"
+})
 
 document.addEventListener('DOMContentLoaded', (event) => {
     var id;
@@ -10,20 +19,25 @@ document.addEventListener('DOMContentLoaded', (event) => {
     switch (window.location.origin + window.location.pathname) {
         case homeUri:
             {
-                var query = new URLSearchParams(window.location.search).get("polygon");
-                getItemsAsync(query);
+                var query = new URLSearchParams(window.location.search).get("query");
+                buildGetPageAsync(query);
+                break;
+            }
+        case createUri:
+            {
+                buildCreatePage();
                 break;
             }
         case editUri:
             {
                 id = new URLSearchParams(window.location.search).get("itemId");
-                editItemAsync(id);
+                buildEditPageAsync(id);
                 break;
             }
         case deleteUri:
             {
                 id = new URLSearchParams(window.location.search).get("itemId");
-                deleteItemAsync(id);
+                buildDeletePageAsync(id);
                 break;
             }
         default:
@@ -90,7 +104,7 @@ function putDemoSnapshot(id) {
     object.id = id;
 
     var json = JSON.stringify(object);
-
+    console.log(json);
     fetch(webApiUri + id, {
         method: 'PUT',
         headers: {
@@ -110,11 +124,11 @@ function deleteDemoSnapshot(id) {
         .then(result => alert("Response: " + JSON.stringify(result, null, 2)));
 }
 
-async function getItemsAsync(query) {
+async function buildGetPageAsync(query) {
     let data;
 
     if (query) {
-        data = await fetchAsync(webApiUri + "?query=" + query);
+        data = await fetchAsync(webApiSearchUri + query);
     }
     else {
         data = await fetchAsync(webApiUri);
@@ -123,12 +137,17 @@ async function getItemsAsync(query) {
     createTableBody(data);
 }
 
-async function editItemAsync(id) {
+function buildCreatePage() {
+    const satellite = document.getElementById('satellite');
+    addOptionsToSelectList(satellite, null);
+}
+
+async function buildEditPageAsync(id) {
     let data = await fetchAsync(webApiUri + id);
     createEditElement(data);
 }
 
-async function deleteItemAsync(id) {
+async function buildDeletePageAsync(id) {
     let data = await fetchAsync(webApiUri + id);
     createDeleteElement(data);
 }
@@ -151,11 +170,11 @@ function createTableBody(data) {
         td2.appendChild(satelliteNode);
 
         let td3 = tr.insertCell(2);
-        let shootingDateNode = document.createTextNode(item.shootingDate);
+        let shootingDateNode = document.createTextNode(toDMYDate(item.shootingDate));
         td3.appendChild(shootingDateNode);
 
         let td4 = tr.insertCell(3);
-        let cloudinessNode = document.createTextNode(item.cloudiness);
+        let cloudinessNode = document.createTextNode(item.cloudiness + '%');
         td4.appendChild(cloudinessNode);
 
         let td5 = tr.insertCell(4);
@@ -194,9 +213,10 @@ function createEditElement(item) {
     const id = document.getElementById('id');
     id.value = item.id;
     const satellite = document.getElementById('satellite');
+    addOptionsToSelectList(satellite, item);
     satellite.value = item.satellite;
     const shootingDate = document.getElementById('shootingDate');
-    shootingDate.value = item.shootingDate;
+    shootingDate.value = toYMDDate(item.shootingDate);
     const cloudiness = document.getElementById('cloudiness');
     cloudiness.value = item.cloudiness;
     const turn = document.getElementById('turn');
@@ -205,6 +225,21 @@ function createEditElement(item) {
     coordinates.value = item.coordinates;
 
     document.getElementById('editButton').setAttribute('onclick', `putDemoSnapshot(${item.id})`);
+}
+
+function addOptionsToSelectList(element, item) {
+    for (var [key, value] of Object.entries(Satellites)) {
+        let option = document.createElement("option");
+        option.value = key;
+        let idValueNode = document.createTextNode(`${value.valueOf()}`);
+        option.appendChild(idValueNode);
+
+        if (item && value === item.satellite) {
+            option.setAttribute('selected', "selected");
+        }
+
+        element.appendChild(option);
+    }
 }
 
 function createDeleteElement(item) {
@@ -234,5 +269,20 @@ function createDeleteElement(item) {
     }
 }
 
-function searchDemoSnapshot() {
+function searchDemoSnapshot(event) {
+    event.preventDefault();
+    var query = document.getElementById('SearchInput').value;
+    buildGetPageAsync(query);
+}
+
+function toYMDDate(dateString) {
+    var partsArray = dateString.split(/[ ]|[.]/);
+
+    return `${partsArray[2]}-${partsArray[1]}-${partsArray[0]}`;
+}
+
+function toDMYDate(dateString) {
+    var partsArray = dateString.split(/[ ]/);
+
+    return partsArray[0];
 }

@@ -5,7 +5,7 @@ namespace SatelliteDemoSnapshots.DemoSnapshots.DL.DAO.Interfaces
 {
     public interface IRepository<T>
     {
-        public Task<IReadOnlyList<T>> GetAllAsync();
+        public Task<IReadOnlyList<T>> GetAllAsync(string query);
 
         public Task<int> CreateAsync(T entity);
 

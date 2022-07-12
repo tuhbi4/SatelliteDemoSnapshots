@@ -1,10 +1,10 @@
-﻿using Microsoft.Data.SqlClient;
-using Microsoft.Extensions.Configuration;
+﻿using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using SatelliteDemoSnapshots.DemoSnapshots.Common.Entities;
 using SatelliteDemoSnapshots.DemoSnapshots.DL.DAO;
 using SatelliteDemoSnapshots.DemoSnapshots.DL.DAO.Interfaces;
 using System.Data;
+using System.Data.SqlClient;
 
 namespace SatelliteDemoSnapshots.DemoSnapshots.Common.Dependencies
 {

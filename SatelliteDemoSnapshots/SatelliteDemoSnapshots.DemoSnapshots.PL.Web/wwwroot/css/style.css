@@ -8,7 +8,7 @@
 }
 
 .form-floating > label {
-    left:auto;
+    left: auto;
 }
 
 dd {
@@ -21,4 +21,8 @@ dl {
 
 dt.text-end {
     padding-right: 0;
+}
+
+.ml-fix {
+    margin-left: -5px !important;
 }

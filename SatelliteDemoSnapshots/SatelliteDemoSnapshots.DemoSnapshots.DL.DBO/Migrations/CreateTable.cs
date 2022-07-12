@@ -10,9 +10,9 @@ namespace SatelliteDemoSnapshots.DemoSnapshots.DL.DBO.Migrations
             Create.Table("DemoSnapshots")
                 .WithColumn("Id").AsInt32().NotNullable().PrimaryKey().Identity()
                 .WithColumn("Satellite").AsString(255).NotNullable()
-                .WithColumn("ShootingDate").AsDate().NotNullable()
+                .WithColumn("ShootingDate").AsDateTime().NotNullable()
                 .WithColumn("Cloudiness").AsDecimal(5, 2).Nullable()
-                .WithColumn("Coordinates").AsString(255).NotNullable();
+                .WithColumn("Coordinates").AsCustom("GEOGRAPHY").NotNullable();
         }
 
         public override void Down()

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.SqlServer.Types;
+using System;
 
 namespace SatelliteDemoSnapshots.DemoSnapshots.Common.Entities
 {
@@ -6,7 +7,7 @@ namespace SatelliteDemoSnapshots.DemoSnapshots.Common.Entities
     {
         public int Id { get; set; }
 
-        public string Satellite { get; set; }
+        public Satellites Satellite { get; set; }
 
         public DateTime ShootingDate { get; set; }
 
@@ -14,6 +15,6 @@ namespace SatelliteDemoSnapshots.DemoSnapshots.Common.Entities
 
         public int Turn { get; set; }
 
-        public string Coordinates { get; set; }
+        public SqlGeography Coordinates { get; set; }
     }
 }

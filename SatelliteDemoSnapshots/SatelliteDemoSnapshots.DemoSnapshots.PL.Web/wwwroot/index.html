@@ -14,13 +14,13 @@
         <hr>
     </header>
     <div class="main container">
-        <form id="search-panel" class="row justify-content-between g-3" action="/" method="get">
+        <form id="search-panel" class="row justify-content-between g-3" action="/" method="get" onsubmit="searchDemoSnapshot(event)">
             <div class="input-group flex-nowrap w-auto" role="group" aria-label="BtnGroup">
                 <div class="form-floating flex-fill">
-                    <input type="text" class="form-control" id="SearchInput1" name="polygon" value="" placeholder="">
-                    <label for="SearchInput1" class="ml-3">Search by polygon:</label>
+                    <input type="text" class="form-control" id="SearchInput" name="query" value="" placeholder="">
+                    <label for="SearchInput" class="ml-3">Search by polygon:</label>
                 </div>
-                <button type="submit" value="" class="btn btn-secondary btn-outline-info btn-search w-auto">
+                <button type="submit" value="" class="btn btn-secondary btn-outline-info w-auto ml-fix">
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
                         <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
                     </svg>

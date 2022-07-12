@@ -1,8 +1,10 @@
+using AutoMapper;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using SatelliteDemoSnapshots.DemoSnapshots.BL.API.Helpers;
 using SatelliteDemoSnapshots.DemoSnapshots.Common.Dependencies;
 using SatelliteDemoSnapshots.DemoSnapshots.DL.DBO.Migrations;
 
@@ -21,7 +23,7 @@ namespace SatelliteDemoSnapshots.DemoSnapshots.BL.API
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
-            services.InjectDependencies(Configuration);
+
             services.AddCors(opt =>
             {
                 opt.AddDefaultPolicy(builder =>
@@ -31,6 +33,16 @@ namespace SatelliteDemoSnapshots.DemoSnapshots.BL.API
                         .AllowAnyMethod();
                 });
             });
+
+            services.InjectDependencies(Configuration);
+
+            var mapperConfig = new MapperConfiguration(mc =>
+            {
+                mc.AddProfile(new MappingProfile());
+            });
+
+            IMapper mapper = mapperConfig.CreateMapper();
+            services.AddSingleton(mapper);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -63,6 +75,7 @@ namespace SatelliteDemoSnapshots.DemoSnapshots.BL.API
         public static IApplicationBuilder MigrateDatabase(this IApplicationBuilder app, IConfiguration configuration)
         {
             MigrationRunner.RunMigrations(configuration);
+
             return app;
         }
     }

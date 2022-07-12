@@ -1,17 +1,31 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
-  <PropertyGroup>
-    <TargetFramework>netcoreapp3.1</TargetFramework>
-  </PropertyGroup>
+	<PropertyGroup>
+		<TargetFramework>netcoreapp3.1</TargetFramework>
+	</PropertyGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\SatelliteDemoSnapshots.DemoSnapshots.Common.Dependencies\SatelliteDemoSnapshots.DemoSnapshots.Common.Dependencies.csproj" />
-    <ProjectReference Include="..\SatelliteDemoSnapshots.DemoSnapshots.Common.Entities\SatelliteDemoSnapshots.DemoSnapshots.Common.Entities.csproj" />
-    <ProjectReference Include="..\SatelliteDemoSnapshots.DemoSnapshots.DL.DAO\SatelliteDemoSnapshots.DemoSnapshots.DL.DAO.csproj" />
-    <ProjectReference Include="..\SatelliteDemoSnapshots.DemoSnapshots.DL.DBO\SatelliteDemoSnapshots.DemoSnapshots.DL.DBO.csproj" />
-  </ItemGroup>
+	<ItemGroup>
+		<PackageReference Include="AutoMapper" Version="11.0.1" />
+		<PackageReference Include="Microsoft.SqlServer.Types" Version="14.0.1016.290" />
+	</ItemGroup>
 
-  <ProjectExtensions><VisualStudio><UserProperties properties_4launchsettings_1json__JsonSchema="https://json.schemastore.org/launchsettings.json" /></VisualStudio></ProjectExtensions>
+	<ItemGroup>
+		<ProjectReference Include="..\SatelliteDemoSnapshots.DemoSnapshots.Common.Dependencies\SatelliteDemoSnapshots.DemoSnapshots.Common.Dependencies.csproj" />
+		<ProjectReference Include="..\SatelliteDemoSnapshots.DemoSnapshots.Common.Entities\SatelliteDemoSnapshots.DemoSnapshots.Common.Entities.csproj" />
+		<ProjectReference Include="..\SatelliteDemoSnapshots.DemoSnapshots.DL.DAO\SatelliteDemoSnapshots.DemoSnapshots.DL.DAO.csproj" />
+		<ProjectReference Include="..\SatelliteDemoSnapshots.DemoSnapshots.DL.DBO\SatelliteDemoSnapshots.DemoSnapshots.DL.DBO.csproj" />
+	</ItemGroup>
 
+	<ItemGroup>
+		<None Update="SqlServerSpatial140.dll">
+			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</None>
+	</ItemGroup>
+
+	<ProjectExtensions>
+		<VisualStudio>
+			<UserProperties properties_4launchsettings_1json__JsonSchema="https://json.schemastore.org/launchsettings.json" />
+		</VisualStudio>
+	</ProjectExtensions>
 
 </Project>

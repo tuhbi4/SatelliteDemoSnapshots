@@ -17,14 +17,29 @@ namespace SatelliteDemoSnapshots.DemoSnapshots.DL.DAO
             this.dbConnection = dbConnection;
         }
 
-        public async Task<IReadOnlyList<DemoSnapshot>> GetAllAsync()
+        public async Task<IReadOnlyList<DemoSnapshot>> GetAllAsync(string query)
         {
-            var sql = "SELECT * FROM DemoSnapshots";
-            using (dbConnection)
+            if (string.IsNullOrEmpty(query))
             {
-                dbConnection.Open();
-                var result = await dbConnection.QueryAsync<DemoSnapshot>(sql);
-                return result.ToList();
+                var sql = "SELECT * FROM DemoSnapshots";
+                using (dbConnection)
+                {
+                    dbConnection.Open();
+                    var result = await dbConnection.QueryAsync<DemoSnapshot>(sql);
+
+                    return result.ToList();
+                }
+            }
+            else
+            {
+                var sql = "SELECT * FROM DemoSnapshots WHERE [Coordinates] LIKE '%' + @Query + '%' ";
+                using (dbConnection)
+                {
+                    dbConnection.Open();
+                    var result = await dbConnection.QueryAsync<DemoSnapshot>(sql, new { Query = query });
+
+                    return result.ToList();
+                }
             }
         }
 
@@ -36,6 +51,7 @@ namespace SatelliteDemoSnapshots.DemoSnapshots.DL.DAO
             {
                 dbConnection.Open();
                 var result = await dbConnection.ExecuteAsync(sql, entity);
+
                 return result;
             }
         }
@@ -47,6 +63,7 @@ namespace SatelliteDemoSnapshots.DemoSnapshots.DL.DAO
             {
                 dbConnection.Open();
                 var result = await dbConnection.QuerySingleOrDefaultAsync<DemoSnapshot>(sql, new { Id = id });
+
                 return result;
             }
         }
@@ -59,6 +76,7 @@ namespace SatelliteDemoSnapshots.DemoSnapshots.DL.DAO
             {
                 dbConnection.Open();
                 var result = await dbConnection.ExecuteAsync(sql, entity);
+
                 return result;
             }
         }
@@ -70,6 +88,7 @@ namespace SatelliteDemoSnapshots.DemoSnapshots.DL.DAO
             {
                 dbConnection.Open();
                 var result = await dbConnection.ExecuteAsync(sql, new { Id = id });
+
                 return result;
             }
         }
