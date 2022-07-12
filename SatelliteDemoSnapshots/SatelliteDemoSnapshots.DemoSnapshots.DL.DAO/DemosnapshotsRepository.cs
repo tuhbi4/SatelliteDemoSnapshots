@@ -32,7 +32,7 @@ namespace SatelliteDemoSnapshots.DemoSnapshots.DL.DAO
             }
             else
             {
-                var sql = "SELECT * FROM DemoSnapshots WHERE [Coordinates] LIKE '%' + @Query + '%' ";
+                var sql = "SELECT * FROM DemoSnapshots WHERE [Coordinates] .STContains(@Query) = 1";
                 using (dbConnection)
                 {
                     dbConnection.Open();
