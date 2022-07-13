@@ -1,0 +1,28 @@
+﻿.table-rounded > * > * > * {
+    border-radius: 1rem;
+    text-align: center;
+}
+
+.table-rounded > thead {
+    border-color: unset;
+}
+
+.form-floating > label {
+    left: auto;
+}
+
+dd {
+    margin-bottom: 0;
+}
+
+dl {
+    margin-bottom: 0.5rem;
+}
+
+dt.text-end {
+    padding-right: 0;
+}
+
+.ml-fix {
+    margin-left: -5px !important;
+}

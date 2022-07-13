@@ -1,0 +1,58 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Create Demosnapshot</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    <link rel="stylesheet" href="/css/style.css" />
+</head>
+<body>
+    <header>
+        <h1 class="display-5 text-center text-bg-dark my-0">Welcome to DemoSnapshots!</h1>
+    </header>
+    <hr class="my-3">
+    <div class="container">
+        <div class="container">
+            <div class="col-md-8 mx-auto">
+                <form method="post" id="create-panel">
+                    <div class="row form-group">
+                        <div class="col-md-6 form-floating flex-fill mb-3">
+                            <select id="satellite" name="satellite" class="form-select shadow-sm">
+                                <option disabled="disabled" selected="selected"></option>
+                            </select>
+                            <label for="satellite" class="ml-3">Satellite:</label>
+                        </div>
+                        <div class="col-md-6 form-floating mb-3">
+                            <input id="shootingDate" name="shootingDate" type="date" class="form-control shadow-sm" value="" placeholder="">
+                            <label for="shootingDate" class="ml-3">Shooting Date:</label>
+                        </div>
+                        <div class="col-md-6 form-floating mb-3">
+                            <input id="cloudiness" name="cloudiness" type="number" class="form-control shadow-sm" value="" placeholder="">
+                            <label for="cloudiness" class="ml-3">Cloudiness:</label>
+                        </div>
+                        <div class="col-md-6 form-floating mb-3">
+                            <input id="turn" name="turn" type="number" class="form-control shadow-sm" value="" placeholder="">
+                            <label for="turn" class="ml-3">Turn:</label>
+                        </div>
+                        <div class="col-md-12 form-floating mb-3">
+                            <input id="coordinates" name="coordinates" type="text" class="form-control shadow-sm" value="" placeholder="">
+                            <label for="coordinates" class="ml-3">Coordinates:</label>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <hr class="my-3">
+        <div class="row justify-content-center">
+            <div class="btn-group w-auto">
+                <button type="button" class="btn btn-success shadow" onclick="postNewDemoSnapshot()">Create</button>
+                <button type="button" class="btn btn-secondary shadow" onclick="loadIndexPage()">Back to List</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+    <script src="/js/script.js"></script>
+</body>
+</html>
