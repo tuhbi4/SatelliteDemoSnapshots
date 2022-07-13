@@ -11,7 +11,7 @@ namespace SatelliteDemoSnapshots.DemoSnapshots.Common.Entities
 
         public DateTime ShootingDate { get; set; }
 
-        public decimal Cloudiness { get; set; }
+        public decimal? Cloudiness { get; set; }
 
         public int Turn { get; set; }
 

@@ -174,7 +174,10 @@ function createTableBody(data) {
         td3.appendChild(shootingDateNode);
 
         let td4 = tr.insertCell(3);
-        let cloudinessNode = document.createTextNode(item.cloudiness + '%');
+        let cloudinessNode = document.createTextNode('');
+        if (item.cloudiness) {
+            cloudinessNode = document.createTextNode(item.cloudiness + '%');
+        }
         td4.appendChild(cloudinessNode);
 
         let td5 = tr.insertCell(4);
@@ -205,8 +208,15 @@ function createTableBody(data) {
 }
 
 function convertData(object) {
-    object.cloudiness = parseFloat(object.cloudiness);
-    object.turn = parseInt(object.turn, 10);
+    if (object.cloudiness) {
+        object.cloudiness = parseFloat(object.cloudiness);
+    }
+    else {
+        object.cloudiness = null;
+    }
+    if (object.turn) {
+        object.turn = parseInt(object.turn, 10);
+    }
 }
 
 function createEditElement(item) {

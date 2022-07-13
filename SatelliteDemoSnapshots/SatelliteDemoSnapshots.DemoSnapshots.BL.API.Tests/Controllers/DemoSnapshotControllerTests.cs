@@ -62,8 +62,7 @@ namespace SatelliteDemoSnapshots.DemoSnapshots.BL.API.Tests.Controllers
             Assert.IsNotNull(resultObject);
             var presentations = resultObject as IEnumerable<DemoSnapshotModel>;
             Assert.IsNotNull(presentations);
-            Assert.AreEqual(presentations.Select(x => x.Id).Intersect(_demoSnapshotModelsList.Select(x => x.Id)).Count(),
-                    presentations.Count());
+            Assert.AreEqual(presentations.Count(), presentations.Select(x => x.Id).Intersect(_demoSnapshotModelsList.Select(x => x.Id)).Count());
         }
 
         [TestCase(1, ExpectedResult = 1)]
@@ -83,12 +82,12 @@ namespace SatelliteDemoSnapshots.DemoSnapshots.BL.API.Tests.Controllers
             Assert.IsNotNull(resultObject);
             var presentation = resultObject as DemoSnapshotModel;
             Assert.IsNotNull(presentation);
-            Assert.AreEqual(presentation.Id, actual.Id);
-            Assert.AreEqual(presentation.Satellite, actual.Satellite);
-            Assert.AreEqual(presentation.ShootingDate, actual.ShootingDate);
-            Assert.AreEqual(presentation.Cloudiness, actual.Cloudiness);
-            Assert.AreEqual(presentation.Turn, actual.Turn);
-            Assert.AreEqual(presentation.Coordinates, actual.Coordinates);
+            Assert.AreEqual(actual.Id, presentation.Id);
+            Assert.AreEqual(actual.Satellite, presentation.Satellite);
+            Assert.AreEqual(actual.ShootingDate, presentation.ShootingDate);
+            Assert.AreEqual(actual.Cloudiness, presentation.Cloudiness);
+            Assert.AreEqual(actual.Turn, presentation.Turn);
+            Assert.AreEqual(actual.Coordinates, presentation.Coordinates);
 
             return await Task.FromResult(presentation.Id);
         }
@@ -99,7 +98,7 @@ namespace SatelliteDemoSnapshots.DemoSnapshots.BL.API.Tests.Controllers
             // Arrange
             var demoSnapshotController = CreateDemoSnapshotController();
 
-            DemoSnapshot actualDemoSnapshot = new DemoSnapshot()
+            DemoSnapshot expectedDemoSnapshot = new DemoSnapshot()
             {
                 Id = 3,
                 Satellite = Satellites.KOMPSAT,
@@ -128,16 +127,16 @@ namespace SatelliteDemoSnapshots.DemoSnapshots.BL.API.Tests.Controllers
 
             // Assert
             Assert.IsNotNull(resultObject);
-            Assert.AreEqual(newId, actualDemoSnapshot.Id);
-            var newDemoSnapshot = _demoSnapshotsList.Find(x => x.Id.Equals(newId));
-            Assert.IsNotNull(newDemoSnapshot);
-            Assert.AreEqual(newDemoSnapshot.Id, actualDemoSnapshot.Id);
-            Assert.AreEqual(newDemoSnapshot.Satellite, actualDemoSnapshot.Satellite);
-            Assert.AreEqual(newDemoSnapshot.ShootingDate, actualDemoSnapshot.ShootingDate);
-            Assert.AreEqual(newDemoSnapshot.Cloudiness, actualDemoSnapshot.Cloudiness);
-            Assert.AreEqual(newDemoSnapshot.Turn, actualDemoSnapshot.Turn);
-            StringAssert.AreEqualIgnoringCase(newDemoSnapshot.Coordinates.ToString(), actualDemoSnapshot.Coordinates.ToString());
-            StringAssert.Contains(newDemoSnapshot.Coordinates.ToString(), actualDemoSnapshot.Coordinates.ToString());
+            Assert.AreEqual(expectedDemoSnapshot.Id, newId);
+            var actualDemoSnapshot = _demoSnapshotsList.Find(x => x.Id.Equals(newId));
+            Assert.IsNotNull(actualDemoSnapshot);
+            Assert.AreEqual(expectedDemoSnapshot.Id, actualDemoSnapshot.Id);
+            Assert.AreEqual(expectedDemoSnapshot.Satellite, actualDemoSnapshot.Satellite);
+            Assert.AreEqual(expectedDemoSnapshot.ShootingDate, actualDemoSnapshot.ShootingDate);
+            Assert.AreEqual(expectedDemoSnapshot.Cloudiness, actualDemoSnapshot.Cloudiness);
+            Assert.AreEqual(expectedDemoSnapshot.Turn, actualDemoSnapshot.Turn);
+            StringAssert.AreEqualIgnoringCase(expectedDemoSnapshot.Coordinates.ToString(), actualDemoSnapshot.Coordinates.ToString());
+            StringAssert.Contains(expectedDemoSnapshot.Coordinates.ToString(), actualDemoSnapshot.Coordinates.ToString());
         }
 
         [Test]
@@ -147,7 +146,7 @@ namespace SatelliteDemoSnapshots.DemoSnapshots.BL.API.Tests.Controllers
             var demoSnapshotController = CreateDemoSnapshotController();
             int id = 2;
 
-            DemoSnapshot actualDemoSnapshot = new DemoSnapshot()
+            DemoSnapshot expectedDemoSnapshot = new DemoSnapshot()
             {
                 Id = 2,
                 Satellite = Satellites.KOMPSAT,
@@ -177,15 +176,15 @@ namespace SatelliteDemoSnapshots.DemoSnapshots.BL.API.Tests.Controllers
             // Assert
             Assert.IsNotNull(resultObject);
             Assert.AreEqual(newId, id);
-            var newDemoSnapshot = _demoSnapshotsList.Find(x => x.Id.Equals(newId));
-            Assert.IsNotNull(newDemoSnapshot);
-            Assert.AreEqual(newDemoSnapshot.Id, actualDemoSnapshot.Id);
-            Assert.AreEqual(newDemoSnapshot.Satellite, actualDemoSnapshot.Satellite);
-            Assert.AreEqual(newDemoSnapshot.ShootingDate, actualDemoSnapshot.ShootingDate);
-            Assert.AreEqual(newDemoSnapshot.Cloudiness, actualDemoSnapshot.Cloudiness);
-            Assert.AreEqual(newDemoSnapshot.Turn, actualDemoSnapshot.Turn);
-            StringAssert.AreEqualIgnoringCase(newDemoSnapshot.Coordinates.ToString(), actualDemoSnapshot.Coordinates.ToString());
-            StringAssert.Contains(newDemoSnapshot.Coordinates.ToString(), actualDemoSnapshot.Coordinates.ToString());
+            var actualDemoSnapshot = _demoSnapshotsList.Find(x => x.Id.Equals(newId));
+            Assert.IsNotNull(actualDemoSnapshot);
+            Assert.AreEqual(expectedDemoSnapshot.Id, actualDemoSnapshot.Id);
+            Assert.AreEqual(expectedDemoSnapshot.Satellite, actualDemoSnapshot.Satellite);
+            Assert.AreEqual(expectedDemoSnapshot.ShootingDate, actualDemoSnapshot.ShootingDate);
+            Assert.AreEqual(expectedDemoSnapshot.Cloudiness, actualDemoSnapshot.Cloudiness);
+            Assert.AreEqual(expectedDemoSnapshot.Turn, actualDemoSnapshot.Turn);
+            StringAssert.AreEqualIgnoringCase(expectedDemoSnapshot.Coordinates.ToString(), actualDemoSnapshot.Coordinates.ToString());
+            StringAssert.Contains(expectedDemoSnapshot.Coordinates.ToString(), actualDemoSnapshot.Coordinates.ToString());
         }
 
         [Test]
@@ -193,18 +192,18 @@ namespace SatelliteDemoSnapshots.DemoSnapshots.BL.API.Tests.Controllers
         {
             // Arrange
             var demoSnapshotController = CreateDemoSnapshotController();
-            int id = 1;
+            int actualId = 1;
 
             // Act
-            IActionResult result = await demoSnapshotController.DeleteAsync(id);
+            IActionResult result = await demoSnapshotController.DeleteAsync(actualId);
             var resultObject = (result as OkObjectResult).Value;
             Int32.TryParse(resultObject.ToString(), out var deletedId);
 
             // Assert
             Assert.IsNotNull(resultObject);
-            Assert.AreEqual(deletedId, id);
-            var newDemoSnapshot = _demoSnapshotsList.Find(x => x.Id.Equals(deletedId));
-            Assert.IsNull(newDemoSnapshot);
+            Assert.AreEqual(deletedId, actualId);
+            var actualDemoSnapshot = _demoSnapshotsList.Find(x => x.Id.Equals(deletedId));
+            Assert.IsNull(actualDemoSnapshot);
         }
 
         [TestCase(1, ExpectedResult = 1)]

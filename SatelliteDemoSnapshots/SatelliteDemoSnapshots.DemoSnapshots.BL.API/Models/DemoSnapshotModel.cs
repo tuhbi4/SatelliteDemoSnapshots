@@ -15,14 +15,13 @@ namespace SatelliteDemoSnapshots.DemoSnapshots.BL.API.Models
         [DataType(DataType.Date)]
         public string ShootingDate { get; set; }
 
-        public decimal Cloudiness { get; set; }
+        public decimal? Cloudiness { get; set; }
 
         [Required]
         public int Turn { get; set; }
 
         [Required]
         [DataType(DataType.Text)]
-        [MaxLength(255)]
         public string Coordinates { get; set; }
     }
 }

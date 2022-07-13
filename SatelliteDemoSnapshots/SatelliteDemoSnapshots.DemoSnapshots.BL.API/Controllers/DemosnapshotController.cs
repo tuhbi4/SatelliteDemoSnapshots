@@ -45,23 +45,38 @@ namespace SatelliteDemoSnapshots.DemoSnapshots.BL.API.Controllers
         [HttpPost]
         public async Task<IActionResult> PostAsync([FromBody] DemoSnapshotModel demoSnapshotModel)
         {
-            DemoSnapshot demoSnapshot = mapper.Map<DemoSnapshot>(demoSnapshotModel);
+            if (ModelState.IsValid)
+            {
+                DemoSnapshot demoSnapshot = mapper.Map<DemoSnapshot>(demoSnapshotModel);
 
-            return Ok(await _demoSnapshotRepository.CreateAsync(demoSnapshot));
+                return Ok(await _demoSnapshotRepository.CreateAsync(demoSnapshot));
+            }
+
+            return ValidationProblem();
         }
 
         [HttpPut("{id}")]
         public async Task<IActionResult> PutAsync(int id, [FromBody] DemoSnapshotModel demoSnapshotModel)
         {
-            DemoSnapshot demoSnapshot = mapper.Map<DemoSnapshot>(demoSnapshotModel);
+            if (ModelState.IsValid)
+            {
+                DemoSnapshot demoSnapshot = mapper.Map<DemoSnapshot>(demoSnapshotModel);
 
-            return Ok(await _demoSnapshotRepository.UpdateAsync(demoSnapshot));
+                return Ok(await _demoSnapshotRepository.UpdateAsync(demoSnapshot));
+            }
+
+            return ValidationProblem();
         }
 
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteAsync(int id)
         {
             return Ok(await _demoSnapshotRepository.DeleteAsync(id));
+        }
+
+        public IActionResult Error()
+        {
+            return NotFound();
         }
     }
 }
